@@ -18,7 +18,7 @@ class Mainview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Todo app"),
+        title: const Text("To-Do App"),
       ),
       body: _list(),
       floatingActionButton: FloatingActionButton(
@@ -83,8 +83,60 @@ class SecondView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Todo app"),
+        title: const Text("To-Do App"),
       ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(height: 10),
+            _todoLabel(),
+            Container(height: 10),
+            _todoInputField(),
+            Container(height: 20),
+            _iconAddRow(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _todoLabel() {
+    return Container(
+      margin: EdgeInsets.only(top: 22),
+      child: Text(
+        "Ny To-Do",
+        style: TextStyle(fontSize: 20),
+      ),
+    );
+  }
+
+  Widget _todoInputField() {
+    return Container(
+      margin: EdgeInsets.only(left: 25, right: 25),
+      child: TextField(
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: "Vad ska du göra?",
+        ),
+      ),
+    );
+  }
+
+  Widget _iconAddRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          child: Icon(Icons.add),
+        ),
+        Column(
+          children: [
+            Text("Lägg till", style: TextStyle(fontSize: 17)),
+          ],
+        ),
+      ],
     );
   }
 }
