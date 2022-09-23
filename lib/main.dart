@@ -6,15 +6,18 @@ import 'MainView.dart';
 
 void main() {
   var state = MyState();
+  state.getTodo();
   runApp(
     ChangeNotifierProvider(
       create: (context) => state,
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MainView(),
+      home: const MainView(),
     );
   }
 }

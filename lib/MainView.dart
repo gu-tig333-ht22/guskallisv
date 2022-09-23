@@ -6,6 +6,9 @@ import 'TodoList.dart';
 import 'model.dart';
 
 class MainView extends StatelessWidget {
+  const MainView({Key? key}) : super(key: key);
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -13,9 +16,7 @@ class MainView extends StatelessWidget {
         actions: [
           PopupMenuButton(
               onSelected: (int value) {
-                if (value != null)
-                  Provider.of<MyState>(context, listen: false)
-                      .setFilterBy(value);
+                Provider.of<MyState>(context, listen: false).setFilterBy(value);
               },
               itemBuilder: (context) => [
                     PopupMenuItem(child: Text('Alla'), value: 1),
@@ -34,7 +35,8 @@ class MainView extends StatelessWidget {
           var newItem = await Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => AddTodoView(newTodo(message: ''))));
+                  builder: (context) =>
+                      AddTodoView(newTodo(message: '', id: ''))));
           if (newItem != null) {
             Provider.of<MyState>(context, listen: false).addTodo(newItem);
           }
@@ -45,10 +47,11 @@ class MainView extends StatelessWidget {
 
   List<newTodo> _filterList(list, value) {
     if (value == 1) return list;
-    if (value == 2)
+    if (value == 2) {
       return list.where((todo) => todo.isCompleted == true).toList();
-    else if (value == 3)
+    } else if (value == 3) {
       return list.where((todo) => todo.isCompleted == false).toList();
+    }
 
     return list;
   }
