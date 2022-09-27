@@ -1,28 +1,22 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import './model.dart';
 
 class AddTodoView extends StatefulWidget {
-  final newTodo todo;
-
-  AddTodoView(this.todo);
+  final newTodo message;
+  const AddTodoView(this.message);
 
   @override
   State<StatefulWidget> createState() {
-    return AddTodoViewState(todo);
+    return AddTodoViewState(message);
   }
 }
 
 class AddTodoViewState extends State<AddTodoView> {
-  late String message;
-
-  late TextEditingController textEditingController;
+  String message = "message";
+  TextEditingController textEditingController = TextEditingController();
 
   AddTodoViewState(newTodo todo) {
     this.message = todo.message;
-
-    textEditingController = TextEditingController(text: todo.message);
 
     textEditingController.addListener(() {
       setState(() {
@@ -68,7 +62,7 @@ class AddTodoViewState extends State<AddTodoView> {
       children: [
         TextButton.icon(
           onPressed: () {
-            Navigator.pop(context, newTodo(message: message));
+            Navigator.pop(context, newTodo(message: message, id: ""));
           },
           icon: Icon(
             Icons.add,
