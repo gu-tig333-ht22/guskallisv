@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'AddTodoView.dart';
@@ -12,7 +13,12 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mina To-Do'),
+        title: Text(
+          'Mina To-Do',
+          style: GoogleFonts.oswald(
+            fontSize: 30,
+          ),
+        ),
         actions: [
           PopupMenuButton(
               onSelected: (int value) {

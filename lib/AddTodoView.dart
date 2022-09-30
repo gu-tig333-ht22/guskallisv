@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './model.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AddTodoView extends StatefulWidget {
   final newTodo message;
@@ -28,7 +29,12 @@ class AddTodoViewState extends State<AddTodoView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Lägg till To-Do'),
+          title: Text(
+            'Lägg till To-Do',
+            style: GoogleFonts.oswald(
+              fontSize: 30,
+            ),
+          ),
         ),
         body: Center(
             child: Column(
@@ -44,13 +50,13 @@ class AddTodoViewState extends State<AddTodoView> {
 
   Widget _todoInputField() {
     return Container(
-      margin: EdgeInsets.only(left: 25, right: 25),
+      margin: const EdgeInsets.only(left: 25, right: 25),
       child: TextField(
         textAlign: TextAlign.center,
         controller: textEditingController,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           border: OutlineInputBorder(),
-          contentPadding: EdgeInsets.all(16),
+          contentPadding: EdgeInsets.all(18),
           hintText: 'Vad ska du göra?',
         ),
       ),
@@ -64,16 +70,21 @@ class AddTodoViewState extends State<AddTodoView> {
           onPressed: () {
             Navigator.pop(context, newTodo(message: message, id: ""));
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.add,
             color: Colors.black,
-            size: 20.0,
+            size: 26.0,
           ),
-          label: Text("Lägg till",
-              style: TextStyle(
+          label: Text(
+            "LÄGG TILL",
+            style: GoogleFonts.poppins(
+              textStyle: TextStyle(
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
                 fontSize: 16.0,
-              )),
+              ),
+            ),
+          ),
         ),
       ],
     );

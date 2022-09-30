@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'package:template/model.dart';
 import 'MainView.dart';
 
@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'To-Do App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
+        splashColor: Color.fromARGB(179, 0, 2, 5),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const MainView(),
